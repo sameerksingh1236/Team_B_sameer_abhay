@@ -1,4 +1,4 @@
-from os import system,name
+from os import system,name    #this is for updating board instead of printing new one again
 def chooseMarker():
     while True:
         Player1=input('Player1 choose marker (X or O): ')
