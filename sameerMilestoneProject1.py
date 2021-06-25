@@ -13,29 +13,6 @@ def chooseMarker():
 
 def winner(Board,Player1,sizeBoard):     #removed Player2 from this function as it was not needed
     #implementing for generalized nXn dimension board
-    
-    '''if Board[0]==Board[2]==Board[3]!=' ':
-        marker=Board[1]
-    elif Board[4]==Board[5]==Board[6]!=' ':
-        marker=Board[4]
-    elif Board[7]==Board[8]==Board[9]!=' ':
-        marker=Board[7]    
-    elif Board[1]==Board[4]==Board[7]!=' ':
-        marker=Board[1]
-    elif Board[2]==Board[5]==Board[8]!=' ':
-        marker=Board[2]
-    elif Board[3]==Board[6]==Board[9]!=' ':
-        marker=Board[3]
-    elif Board[1]==Board[5]==Board[9]!=' ':
-        marker=Board[1]
-    elif Board[3]==Board[5]==Board[7]!=' ':
-        marker=Board[3]
-    else:
-        return False
-    if marker==Player1:
-        return 'Player1'
-    else:
-        return 'Player2' '''
 
     for row in range(sizeBoard):       #Rows check
         currentRow=Board[row][0]
