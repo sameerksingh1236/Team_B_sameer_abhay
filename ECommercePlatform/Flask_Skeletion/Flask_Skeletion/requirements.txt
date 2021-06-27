@@ -1,0 +1,12 @@
+Flask==1.1.2
+sendgrid==6.4.7
+Flask_Cors==3.0.8
+psycopg2
+uuid
+pandas
+datetime
+boto3
+python-dotenv
+pytest
+flask-oidc
+okta_jwt
