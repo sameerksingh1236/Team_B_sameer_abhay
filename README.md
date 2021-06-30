@@ -1,2 +1,0 @@
-# sameer_abhay
-Assignments

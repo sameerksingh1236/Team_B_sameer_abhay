@@ -1,0 +1,3 @@
+Install flask by running this command in your Terminal
+
+# pip install flask
