@@ -1,11 +1,15 @@
 from flask import Blueprint, jsonify, request, json, Flask, g
-from flask import current_app, Request, Response
+from flask import current_app, render_template
 import flask
 import json
 
 uri = Blueprint("endpoint", __name__, url_prefix="/")
 
 cart=dict()
+@uri.route("/",methods=["GET"])
+def hello():
+    return render_template('base.html')
+
 @uri.route("/healthCheck", methods=["GET"])
 def healthCheck():
     return "Working"
@@ -63,6 +67,8 @@ def listCart():
 @uri.route("/purchase", methods=["GET"])
 def purchase():
     total=0
+    global cart
     for product in cart:
         total=total+cart[product]["price"]
+    cart=dict()
     return (jsonify(total),200)
