@@ -5,47 +5,64 @@ import json
 
 uri = Blueprint("endpoint", __name__, url_prefix="/")
 
-
+cart=dict()
 @uri.route("/healthCheck", methods=["GET"])
 def healthCheck():
     return "Working"
 
-#1st api
+# 1st api
 @uri.route("/allProducts", methods=["GET"])
 def allProducts():
     file=open('products.json')
     data=json.load(file)
-    return Response(jsonify(data),200)
+    #print(data)
+    file.close()
+    return (jsonify(data),200)
 
 #2nd api
-@uri.route("/specificProduct", methods=["GET"])
-def specificProduct():
+@uri.route("/specificProduct/<int:product_id>", methods=["GET"])
+def specificProduct(product_id):
     file=open('products.json')
     data=json.load(file)
-    product_id=request.args['product_id']
-    for key,val in data.items():
-        if val["sku"]==product_id:
-            return Response(jsonify(data[key]),200)
-    return Response("Product not found",404)
+    #product_id=request.args['product_id']
+    for x in data:
+        if x["sku"]==product_id:
+            return (jsonify(x),200)
+    return ("Product not found",404)
 
 #3rd api
-@uri.route("/addProduct", methods=["GET","POST"])
-def allProduct():  
+@uri.route("/addProduct/<int:product_id>", methods=["GET"])
+def addProduct(product_id):  
     file=open('products.json')
     data=json.load(file)
-    return ""
+    #product_id=request.args['product_id']
+    for x in data:
+        if x["sku"]==product_id:
+            if product_id in cart:
+                return (jsonify(cart),200)
+            else:
+                cart[product_id]=x
+                return (jsonify(cart),200)
+    return ("Product not found",404)
 
 #4th api
-@uri.route("/deleteProduct", methods=["GET"])
-def allProducts():
-    return "all products instaed of this"
+@uri.route("/deleteProduct/<int:product_id>", methods=["GET"])
+def deleteProduct(product_id):
+    if product_id in cart:
+        cart.pop(product_id)
+        return (jsonify(cart),200)
+    else:
+        return (jsonify(cart),200)
 
 #5th api
 @uri.route("/listCart", methods=["GET"])
-def allProducts():
-    return "all products in cart"
+def listCart():
+    return (jsonify(cart),200)
 
 #6th api
 @uri.route("/purchase", methods=["GET"])
-def allProducts():
-    return "list product in current cart"
+def purchase():
+    total=0
+    for product in cart:
+        total=total+cart[product]["price"]
+    return (jsonify(total),200)
