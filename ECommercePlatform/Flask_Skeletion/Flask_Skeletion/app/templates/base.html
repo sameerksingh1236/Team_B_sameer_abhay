@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<title>E-Commerce Platform</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<section class="content">
+    <table>
+    <tr><td>API</td><td>Function</td></tr>
+    <tr><td>"/allProducts"</td><td>          =>    list of all products</td></tr>
+    <tr><td>"/specificProduct/{integer product_id}"</td><td>  =>    details of specific product</td></tr>
+    <tr><td>"/addProduct/{integer product_id}"</td><td>       =>    add procuct to cart</td></tr>
+    <tr><td>"/deleteProduct/{integer product_id}"</td><td>    =>    delete product from cart</td></tr>
+    <tr><td>"/listCart"</td><td>                              =>    list of products in cart</td></tr>
+    <tr><td>"/purchase"</td><td>                              =>    total price of items in cart</td></tr>
+    </table>
+    <p>Some of the product_ids to use: 43900 , 48530 , 127687 , 150115 , 185230</p>
+</section>
+</body>
+</html>
